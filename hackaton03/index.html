@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <h2 class="title">hackaton03</h2>
+
+  <div class="list">
+    <h5>
+      1.- Hacer un algoritmo en JavaScript que lea un número por el teclado y determinar si tiene tres dígitos.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example">
+      <input id="number" type="number" class="custom-input" placeholder="Ingrese numero" />
+      <button id="btn-read-number">Validar</button>
+    </div>
+  </div>
+
+  <div class="list">
+    <h5>
+      1.- Hacer un algoritmo en JavaScript que lea un número por el teclado y determinar si tiene tres dígitos.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example">
+      <input id="number" type="number" class="custom-input" placeholder="Ingrese numero" />
+      <button id="btn-read-number">Validar</button>
+    </div>
+  </div>
+</body>
+<script>
+  const $btn = document.getElementById('btn-read-number')
+  const $number = document.getElementById('number')
+
+  $btn.addEventListener('click', () => {
+    
+    if (!$number.value.length || $number.value.length == 0) {
+      return alert('Ingrese numero a validar')
+    } 
+
+    if($number.value.length > 3 ) {
+      alert('El numero ingresado tiene mas de 3 cifras.')
+    } else {
+      alert('No tiene 3 cifras')
+    }
+
+  })
+
+</script>
+
+</html>

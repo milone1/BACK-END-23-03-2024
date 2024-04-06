@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  text-transform: uppercase;
+  padding: 0 20px 20px 0;
+  color: white;
+}
+
+h5 {
+  font-weight: 300;
+  color: white;
+}
+
+body {
+  background-color: #020202;
+  width: 100%;
+  height: auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  display: grid;
+  place-items: center;
+  gap: 20px;
+}
+/* leeter # */
+.list {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  /* min-height: 400px; */
+  background: #19191a;
+  border-radius: 20px;
+  padding: 20px 20px 20px 20px;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  margin-top: 10px;
+  background-color: #f2f2f240;
+}
+
+button {
+  /* width: 100%; */
+  color: #020202;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: #9ae5f3;
+  color: #020202;
+  border: 1px solid #9ae5f390;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition-property: background-color, color, border;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+button:hover {
+  background-color: #020202;
+  color: #fff;
+  border: 1px solid #f2f2f2;
+  cursor: pointer;
+}
+
+.custom-input {
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #f2f2f240;
+  outline: none;
+}
+
+.container-example {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+pre {
+  background-color: #212121;
+  color: #f8f8f8;
+  padding: 20px;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: auto;
+  position: relative;
+}
+
+pre::before {
+  /* content: "ᛟᚱᚾᚨᛋ"; */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f8f8f8;
+  font-family: 'Old Norse', sans-serif;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  color: #f8f8f8;
+}
+
+.keyword {
+  color: #9cdcfe; /* Palabras clave */
+}
+
+.comment {
+  color: #6a9955; /* Comentarios */
+}
+
+.string {
+  color: #ce9178; /* Cadenas de texto */
+}
+
+.function-name {
+  color: #dcdcaa; /* Nombres de funciones */
+}
+
+.bracket {
+  color: #569cd6; /* Corchetes */
+}
