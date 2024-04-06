@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-light.min.css">
+
   <title>Document</title>
 </head>
 <body>
@@ -18,37 +20,21 @@
       <input id="number" type="number" class="custom-input" placeholder="Ingrese numero" />
       <button id="btn-read-number">Validar</button>
     </div>
+
+    <pre>
+      <code>
+if($number.value.length > 3 ) {
+  alert('El numero ingresado tiene mas de 3 cifras.')
+} else {
+  alert('No tiene 3 cifras')
+}
+      </code>
+    </pre>
   </div>
 
-  <div class="list">
-    <h5>
-      1.- Hacer un algoritmo en JavaScript que lea un número por el teclado y determinar si tiene tres dígitos.
-    </h5>
-    <div class="divider"></div>
-    <div class="container-example">
-      <input id="number" type="number" class="custom-input" placeholder="Ingrese numero" />
-      <button id="btn-read-number">Validar</button>
-    </div>
-  </div>
 </body>
-<script>
-  const $btn = document.getElementById('btn-read-number')
-  const $number = document.getElementById('number')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 
-  $btn.addEventListener('click', () => {
-    
-    if (!$number.value.length || $number.value.length == 0) {
-      return alert('Ingrese numero a validar')
-    } 
-
-    if($number.value.length > 3 ) {
-      alert('El numero ingresado tiene mas de 3 cifras.')
-    } else {
-      alert('No tiene 3 cifras')
-    }
-
-  })
-
-</script>
-
+<script src="index.js"></script>
 </html>
