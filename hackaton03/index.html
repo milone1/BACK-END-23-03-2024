@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-light.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
 
   <title>Document</title>
 </head>
@@ -23,11 +23,35 @@
 
     <pre>
       <code>
-if($number.value.length > 3 ) {
+
+if($number.value.length == 3 ) {
   alert('El numero ingresado tiene mas de 3 cifras.')
 } else {
   alert('No tiene 3 cifras')
 }
+      </code>
+    </pre>
+  </div>
+
+  <!-- ejercicio 35 -->
+
+  <div class="list">
+    <h5>
+      35.- Hacer un algoritmo en JavaScript que nos permita saber cuál es el número mayor y menor, se debe ingresar sólo veinte números.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example-2">
+      <h4 id="num-max" class="num-max">0</h4>
+      <button id="btn-read-number-35">obtener maximo</button>
+
+      <div id="opacity-list" class="lista-comparada">
+        <h2 id="list-numbers-opacity" class="list-numbers-opacity">123-123</h2>
+      </div>
+    </div>
+
+    <pre>
+      <code>
+const numMax = Math.max(...listNumer)
       </code>
     </pre>
   </div>
