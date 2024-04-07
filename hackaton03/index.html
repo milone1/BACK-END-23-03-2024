@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
 
   <title>Document</title>
 </head>
+
 <body>
   <h2 class="title">hackaton03</h2>
 
@@ -33,11 +36,83 @@ if($number.value.length == 3 ) {
     </pre>
   </div>
 
+  <!-- ejercicio 16 -->
+
+  <div class="list">
+    <h5>
+      16.- Hacer un algoritmo en JavaScript que lea un número y según ese número, indique el día que corresponde.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example-2">
+      <h4 id="name-day" class="num-max">El numero 1 corresponde a Lunes</h4>
+      <button id="btn-read-number-16">obtener dia</button>
+
+    </div>
+
+    <pre>
+        <code>
+const numberDay;
+numberDay = Math.floor(Math.random() * 7) + 1
+        </code>
+      </pre>
+  </div>
+
+  <!-- ejercicio 21 -->
+
+  <div class="list">
+    <h5>
+      21.- Hacer un algoritmo en JavaScript que permita calcular el factorial de un número
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example-2">
+      <h4 id="text-factorial" class="num-max"></h4>
+      <div class="nilakantha">
+        <input id="number-factorial" type="number" class="custom-input" placeholder="Ingrese numero" />
+        <button id="btn-read-number-21">calcular</button>
+      </div>
+    </div>
+
+    <pre>
+        <code>
+for(let i = 1; i <= number; i++) {
+    result = result * i
+  }
+        </code>
+      </pre>
+  </div>
+
+   <!-- ejercicio 24 -->
+
+   <div class="list">
+    <h5>
+      24.- Hacer un algoritmo en JavaScript para realizar la suma de todos los números pares hasta el 1000.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example-2">
+      <h4 id="text-par" class="num-max"></h4>
+      <div class="nilakantha">
+        <input id="number-par" type="number" class="custom-input" placeholder="Ingrese numero" />
+        <button id="btn-read-number-24">calcular</button>
+      </div>
+    </div>
+
+    <pre>
+        <code>
+for(let i = 1; i <= number; i++) {
+  if(i % 2 === 0) {
+    result += i
+  }
+}
+        </code>
+      </pre>
+  </div>
+
   <!-- ejercicio 35 -->
 
   <div class="list">
     <h5>
-      35.- Hacer un algoritmo en JavaScript que nos permita saber cuál es el número mayor y menor, se debe ingresar sólo veinte números.
+      35.- Hacer un algoritmo en JavaScript que nos permita saber cuál es el número mayor y menor, se debe ingresar sólo
+      veinte números.
     </h5>
     <div class="divider"></div>
     <div class="container-example-2">
@@ -51,7 +126,65 @@ if($number.value.length == 3 ) {
 
     <pre>
       <code>
+
 const numMax = Math.max(...listNumer)
+      </code>
+    </pre>
+  </div>
+
+  <!-- ejercicio 38 -->
+
+  <div class="list">
+    <h5>
+      38.- Hacer un algoritmo en JavaScript que nos permita saber si un número es un número perfecto.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example-2">
+      <h4 id="num-perfect" class="num-max">0</h4>
+      <div class="nilakantha">
+        <input id="number-perfect" type="number" class="custom-input" placeholder="Ingrese numero" />
+        <button id="btn-read-number-38">calcular</button>
+      </div>
+    </div>
+
+    <pre>
+        <code>
+let sumaDivisores = 0;
+for (let i = 1; i <= number/2; i++) {
+  if (number % i === 0) {
+    sumaDivisores += i;
+  }
+}
+        </code>
+      </pre>
+  </div>
+
+  <!-- ejercicio 40 -->
+
+  <div class="list">
+    <h5>
+      40.- Hacer un algoritmo en JavaScript que cumpla con la aproximación del número pi con la serie de Nilakantha. La
+      formula que se debe aplicar es:
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example-2">
+      <h4 id="text-pi" class="num-max">0</h4>
+      <div class="nilakantha">
+        <input id="number-nilakantha" type="number" class="custom-input" placeholder="Ingrese numero" />
+        <button id="btn-read-number-40">calcular</button>
+      </div>
+    </div>
+
+    <pre>
+      <code>
+let pi = 3;
+let signo = 1;
+let num = $numbeNilakantha.value;
+
+for(let i = 2; i<= 2 * num; i+=2) {
+  pi += 4/(i*(i+1) * (i+2)) * signo;
+  signo += -1
+}
       </code>
     </pre>
   </div>
@@ -61,4 +194,5 @@ const numMax = Math.max(...listNumer)
 <script>hljs.highlightAll();</script>
 
 <script src="index.js"></script>
+
 </html>
