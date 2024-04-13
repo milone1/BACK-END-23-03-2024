@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
+
+  <title>Document</title>
+</head>
+
+<body>
+  <h2 class="title">hackaton04</h2>
+
+  <div class="list">
+    <h5>
+      1.- Crea una función que retorne la suma de dos números.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example">
+      <div class="dos-digitos">
+        <input id="number-1" type="number" class="custom-input" placeholder="Ingrese numero" />
+        <input id="number-2" type="number" class="custom-input" placeholder="Ingrese numero" />
+      </div>
+      <button id="btn-1">Validar</button>
+    </div>
+
+    <pre>
+      <code>
+
+const sumOfTwoNumbers = (num1, num2) => {
+  const sum = num1 + num2;
+  return sum
+};
+      </code>
+    </pre>
+  </div>
+  <!-- Ejercicio 2 -->
+  <div class="list">
+    <h5>
+      1.- Crea una función que retorne la suma de dos números.
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example">
+      <div class="dos-digitos">
+        <input id="number-3" type="number" class="custom-input" placeholder="Ingrese potencia" />
+        <input id="number-4" type="number" class="custom-input" placeholder="Ingrese base" />
+      </div>
+      <button id="btn-2">calcular</button>
+    </div>
+
+    <pre>
+      <code>
+
+const power = (base, expo) => {
+  const CalculatingThePower; 
+  CalculatingThePower = Math.pow(base, expo);
+  return CalculatingThePower;
+};
+
+      </code>
+    </pre>
+  </div>
+  <!-- Ejercicio 3 -->
+  <div class="list">
+    <h5>
+      3.- Crea una función que tome números y devuelva la suma de sus cubos. sumOfCubes(1, 5, 9) ➞ 855
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example">
+      <input id="number-5" class="custom-input" placeholder="Ingrese numeros" />
+      <button id="btn-3">calcular</button>
+    </div>
+
+    <pre>
+      <code>
+
+const sumOfCubes = (lista) => {
+    let sum = 0;
+    for (let i = 0; i <= lista.length - 1; i++) {
+        sum += Math.pow(lista[i], 3);
+    }
+    return sum;
+};
+
+      </code>
+    </pre>
+  </div>
+
+  <!-- Ejercicio 4 -->
+  <div class="list">
+    <h5>
+      3.- Escribe una función que tome la base y la altura de un triángulo y devuelva su área. triArea(3, 2) ➞ 3
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example">
+      <div class="dos-digitos">
+        <input id="number-6" type="number" class="custom-input" placeholder="Ingrese base" />
+        <input id="number-7" type="number" class="custom-input" placeholder="Ingrese altura" />
+      </div>
+      <button id="btn-4">calcular</button>
+    </div>
+
+    <pre>
+      <code>
+
+const triArea = (base, altura) => {
+    const calculate = base * altura;
+    const area = calculate / 2;
+    return area;
+};
+
+      </code>
+    </pre>
+  </div>
+
+  <!-- Ejercicio 5 -->
+  <div class="list">
+    <h5>
+      3.- Escribe una función que tome la base y la altura de un triángulo y devuelva su área. triArea(3, 2) ➞ 3
+    </h5>
+    <div class="divider"></div>
+    <div class="container-example">
+      <div class="dos-digitos">
+        <input id="number-8" type="number" class="custom-input" placeholder="Ingrese base" />
+        <input id="number-9" class="custom-input" placeholder="Operacion" />
+        <input id="number-10" type="number" class="custom-input" placeholder="Ingrese altura" />
+      </div>
+      <button id="btn-5">calcular</button>
+    </div>
+
+    <pre>
+        <code>
+  
+  <!-- const triArea = (base, altura) => {
+      const calculate = base * altura;
+      const area = calculate / 2;
+      return area;
+  }; -->
+  
+        </code>
+      </pre>
+  </div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script src="index.js"></script>
+
+</html>

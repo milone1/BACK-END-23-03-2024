@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  text-transform: uppercase;
+  padding: 0 20px 20px 0;
+  color: white;
+}
+
+.num-max,
+.lista-comparada,
+h5 {
+  font-weight: 300;
+  color: white;
+}
+
+body {
+  background-color: #020202;
+  width: 100%;
+  height: auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  display: grid;
+  place-items: center;
+  gap: 40px;
+}
+/* leeter # */
+.list {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  /* min-height: 400px; */
+  background: #19191a;
+  border-radius: 20px;
+  padding: 20px 20px 20px 20px;
+  box-shadow: 10px 20px 20px 5px rgba(125,125,125, 0.25);
+}
+
+
+.divider {
+  width: 100%;
+  height: 2px;
+  margin-top: 10px;
+  background-color: #f2f2f240;
+}
+
+button {
+  /* width: 100%; */
+  color: #020202;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: #9ae5f3;
+  color: #020202;
+  border: 1px solid #9ae5f390;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition-property: background-color, color, border;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+button:hover {
+  background-color: #020202;
+  color: #fff;
+  border: 1px solid #f2f2f2;
+  cursor: pointer;
+}
+
+.custom-input {
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #f2f2f240;
+  outline: none;
+}
+
+.container-example {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-example-2 {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.lista-comparada {
+  opacity: 0;
+  font-size: 10px;
+  font-weight: 100;
+}
+/* .container-example-2, */
+.nilakantha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  /* border: 2px solid red; */
+  width: 100%;
+}
+
+.dos-digitos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
