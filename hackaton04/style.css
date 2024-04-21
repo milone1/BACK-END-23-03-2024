@@ -71,12 +71,17 @@ button:hover {
   cursor: pointer;
 }
 
-.custom-input {
+.custom-input,
+.custom-input-1 {
   width: 100px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #f2f2f240;
   outline: none;
+}
+
+.custom-input-1 {
+  width: 10px;
 }
 
 .container-example {
@@ -118,4 +123,19 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.encontrar-letra {
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.selected {
+  color: gold;
 }

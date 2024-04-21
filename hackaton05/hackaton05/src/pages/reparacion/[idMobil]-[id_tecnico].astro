@@ -1,0 +1,99 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const { idMobil, id_tecnico } = Astro.params;
+// console.log(id)
+---
+
+<Layout title="Hachaton05">
+  <section class="w-full h-auto grid place-items-center">
+    <div
+      id="card"
+      class="w-full max-w-[450px] h-auto py-6 px-4 rounded-2xl grid place-items-center"
+    >
+      <h3>Estado de la revision del telefono</h3>
+
+      <div class="">
+        <h2 class="text-white">
+          <span class="uppercase font-semibold">Estado:</span> En espera de autorizacion
+        </h2>
+
+        <h4 class="uppercase font-semibold text-white">
+          Abono: <span id="abonoInicial"></span> s/
+        </h4>
+        <!-- <span id="abonoInicial"></span> -->
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const mobil = JSON.parse(localStorage.getItem("mobil"));
+  const tecnico = JSON.parse(localStorage.getItem("tecnico"));
+  const $abonoInicial = document.getElementById("abonoInicial");
+  class Reparacion {
+    constructor(telefono, tecnico, repuesto) {
+      this.telefono = telefono;
+      this.tecnico = tecnico;
+      this.repuesto = repuesto;
+      this.estado = "En espera de autorizacion";
+    }
+
+    autorizarReparacion() {
+      if (
+        this.telefono.autorizacion &&
+        this.telefono.abono === this.calcularAbonoInicial()
+      ) {
+        this.estado = "En Reparacion";
+      } else {
+        console.log("La autorizacion y/o abono son diferentes. ");
+      }
+    }
+
+    calcularAbonoInicial() {
+      return 0.5 * this.tecnico.calcularReparacion(this.telefono);
+    }
+  }
+
+  class Tecnico {
+    constructor(nombre, skills) {
+      this.nombre = nombre;
+      this.skills = skills;
+    }
+
+    puedeReparar(marca) {
+      return this.skills.includes(marca);
+    }
+
+    calcularReparacion(telefono) {
+      let costoBase = 100;
+      let costoMarca = telefono.marca === "iphone" ? 50 : 0;
+
+      return costoBase * costoMarca;
+    }
+  }
+
+  const card = document.getElementById("card");
+
+  window.addEventListener("load", () => {
+    const newTecnico = new Tecnico(tecnico.name, tecnico.skills);
+    // console.log(mobil.autorizacion);
+    if (mobil.autorizacion) {
+      card.classList.add("bg-green-400");
+    } else {
+      card.classList.add("bg-red-400");
+    }
+
+    if (newTecnico.puedeReparar(mobil.marca)) {
+      const repuestos = ["pantalla", "flex-audio"];
+
+      const reparacion1 = new Reparacion(mobil, tecnico, repuestos);
+
+      // console.log(reparacion1)
+
+      $abonoInicial.innerHTML = newTecnico.calcularReparacion(mobil).toString();
+    } else {
+      alert("El tecnico no puede reparar esa marca");
+    }
+  });
+</script>

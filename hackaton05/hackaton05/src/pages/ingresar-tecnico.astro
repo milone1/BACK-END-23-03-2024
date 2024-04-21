@@ -1,0 +1,106 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// "Samsung", "Oppo", "Alcatel", "Iphone", "Xiaomi"
+const listCelulares = [
+  {
+    marca: 'Samsung',
+    asigned: false
+  },
+  {
+    marca: 'Oppo',
+    asigned: false
+  },
+  {
+    marca: 'Alcatel',
+    asigned: false
+  },
+  {
+    marca: 'Iphone',
+    asigned: false
+  },
+  {
+    marca: 'Xiaomi',
+    asigned: false
+  },
+];
+---
+
+.
+<Layout title="Hachaton05">
+  <section class="w-full h-auto grid place-items-center">
+    <div
+      class="max-w-[450px] w-full bg-white px-5 py-6 rounded-xl grid place-items-center gap-5"
+    >
+      <h3>Ingresar tecnico</h3>
+      <div class="w-full h-auto flex flex-col gap-5">
+        <input
+          id="name"
+          class="py-2 pl-5 bg-gray-600 text-white placeholder:text-gray-300"
+          placeholder="Ingrese nombre"
+        />
+        {
+          listCelulares.map((celular, index) => (
+            <div class="w-full flex flex-col">
+              <label class="flex flex-row gap-4">
+                <input name={celular.marca} class="checkbox" type="checkbox" /> {celular.marca}
+              </label>
+              <br />
+            </div>
+          ))
+        }
+      </div>
+      <button
+        id="ingresar1"
+        class="bg-blue-600 w-full h-auto py-2 text-center uppercase text-white font-medium rounded-full"
+        >Ingresar</button
+      >
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const $name = document.getElementById('name')
+  const $ingresar1 = document.getElementById('ingresar1')
+  const $checkbox = document.getElementsByClassName('checkbox')
+
+
+  class Tecnico {
+    constructor(nombre, skills) {
+      this.nombre = nombre;
+      this.skills = skills
+    }
+    
+    puedeReparar(marca) {
+      return this.skills.includes(marca)
+    }
+    
+    calcularReparacion(telefono) {
+      let costoBase = 100;
+      let costoMarca = telefono.marca === 'iphone' ? 50 : 0;
+      
+      return costoBase * costoMarca
+    }
+  }
+
+  $ingresar1.addEventListener('click', (e) => {
+
+    let onlyNames = [];
+
+    const inputs = Array.from($checkbox).filter(element => element.checked === true)
+
+    inputs.map((element) => {
+      onlyNames.push(element.name)
+    })
+
+    // console.log(onlyNames)
+    const tecnico1 = new Tecnico($name.value || 'No especifica', onlyNames)
+  
+    // console.log(tecnico1)
+
+    localStorage.setItem('tecnico', JSON.stringify(tecnico1) )
+  
+  })
+
+
+</script>

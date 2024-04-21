@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Hachaton05">
+	<section class="w-full h-auto grid place-items-center">
+		<div
+			class="max-w-[450px] w-full bg-white px-5 py-6 rounded-xl grid place-items-center gap-5"
+		>
+		<h3>
+			Ingrese Mobil a revisar
+		</h3>
+			<div class="w-full h-auto flex flex-col gap-5">
+				<input id='serie' class="py-2 pl-5 bg-gray-600 text-white placeholder:text-gray-300" placeholder="Ingrese num Serie" />
+				<input id='imei' class="py-2 pl-5 bg-gray-600 text-white placeholder:text-gray-300" placeholder="Ingrese imei" />
+				<input id='marca' class="py-2 pl-5 bg-gray-600 text-white placeholder:text-gray-300" placeholder="Ingrese marca" />
+			</div>
+			<button
+				id="ingresar"
+				class="bg-blue-600 w-full h-auto py-2 text-center uppercase text-white font-medium rounded-full"
+				>Ingresar</button
+			>
+		</div>
+	</section>
+</Layout>
+<script>
+	const $serie = document.getElementById('serie')
+	const $imei = document.getElementById('imei')
+	const $marca = document.getElementById('marca')
+	const $ingresar = document.getElementById('ingresar')
+
+
+	class Telefono {
+  constructor(numeroSerie, imei, marca) {
+    this.numeroSerie = numeroSerie;
+    this.imei = imei;
+    this.marca = marca;
+    this.reportado = false;
+    this.diagnostico = null;
+    this.autorizacion = false;
+    this.abono = 0;
+  }
+  verificarReporte() {
+    return this.reportado;
+  }
+}
+
+$ingresar.addEventListener('click', () => {
+// console.log($imei.value);
+	if($imei.value !== null || $imei !== undefined) {
+		const telefono1 = new Telefono($serie.value, $imei.value, $marca.value);
+		localStorage.setItem('mobil', JSON.stringify(telefono1) )	
+	}
+
+})
+
+// console.log(telefono1)
+
+
+</script>

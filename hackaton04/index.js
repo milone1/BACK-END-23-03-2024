@@ -20,6 +20,11 @@ const $num10 = document.getElementById('number-10')
 
 const $btn5 = document.getElementById('btn-5')
 
+const $num11 = document.getElementById('number-11')
+const $num12 = document.getElementById('number-12')
+
+const $btn6 = document.getElementById('btn-6')
+const $reemplazar = document.getElementById('reemplazar-letra')
 
 const sumOfTwoNumbers = ($num1, $num2) => {
   const sum = $num1 + $num2;
@@ -125,4 +130,38 @@ $btn5.addEventListener('click', () => {
   }
 
   alert(`${$num8.value} ${$num9.value} ${$num10.value} = ${resultado}`)
+})
+
+// ! EJERCICIO - 9
+
+const handlerIndex = (palabra, caracter) => {
+  const indices = []
+
+  for(let i = 0; i<=palabra.length; i++) {
+    if(palabra[i] === caracter) {
+      indices.push(i)
+    }
+  }
+
+  return indices
+}
+
+$btn6.addEventListener('click',() => {
+  if ($num11.value == null || $num11.value == undefined && $num12.value == null || $num12.value == undefined) {
+    return alert('Ingrese numeros a calcular')
+  }
+
+  const palabra = $num12.value;
+  const caracter = $num11.value;
+
+  const indices = handlerIndex(palabra, caracter) 
+
+  $reemplazar.innerHTML = palabra.split('').map((letra, indice) => {
+    if(indices.includes(indice)) {
+      return `<span class="selected">${letra}</span>`
+    } else {
+      return letra
+    }
+  }).join('');
+
 })
