@@ -2,7 +2,8 @@
 import Layout from "../../layouts/Layout.astro";
 
 const { idMobil, id_tecnico } = Astro.params;
-// console.log(id)
+
+// localStorage.setItem('idMObil', idMobil);
 ---
 
 <Layout title="Hachaton05">
@@ -28,54 +29,37 @@ const { idMobil, id_tecnico } = Astro.params;
 </Layout>
 
 <script>
+  import { Reparacion } from "../../models/ReparacionClass";
+  import { Tecnico } from "../../models/TecnicoClass";
+
   const mobil = JSON.parse(localStorage.getItem("mobil"));
   const tecnico = JSON.parse(localStorage.getItem("tecnico"));
   const $abonoInicial = document.getElementById("abonoInicial");
-  class Reparacion {
-    constructor(telefono, tecnico, repuesto) {
-      this.telefono = telefono;
-      this.tecnico = tecnico;
-      this.repuesto = repuesto;
-      this.estado = "En espera de autorizacion";
-    }
 
-    autorizarReparacion() {
-      if (
-        this.telefono.autorizacion &&
-        this.telefono.abono === this.calcularAbonoInicial()
-      ) {
-        this.estado = "En Reparacion";
-      } else {
-        console.log("La autorizacion y/o abono son diferentes. ");
-      }
-    }
-
-    calcularAbonoInicial() {
-      return 0.5 * this.tecnico.calcularReparacion(this.telefono);
-    }
-  }
-
-  class Tecnico {
-    constructor(nombre, skills) {
-      this.nombre = nombre;
-      this.skills = skills;
-    }
-
-    puedeReparar(marca) {
-      return this.skills.includes(marca);
-    }
-
-    calcularReparacion(telefono) {
-      let costoBase = 100;
-      let costoMarca = telefono.marca === "iphone" ? 50 : 0;
-
-      return costoBase * costoMarca;
-    }
-  }
+  const obtenerLocalStorage =
+    JSON.parse(localStorage.getItem("mobil")) || ([] as any);
 
   const card = document.getElementById("card");
 
+  var ruta = window.location.pathname; // Devuelve "/reparacion/123"
+
+  // Dividir la ruta en segmentos separados por "/"
+  var segmentos = ruta.split("/"); // Devuelve ["", "reparacion", "123"]
+
+  // Obtener el último segmento que es el ID
+  var id = segmentos[segmentos.length - 1];
+  
+  const params = id.split('-')
+
+  // console.log(params)
+
+ const mobilEncontrado = mobil.filter((element) => element.marca === params[0])
+
+//  console.log(mobilEncontrado)
+
   window.addEventListener("load", () => {
+    // console.log(mobil)
+
     const newTecnico = new Tecnico(tecnico.name, tecnico.skills);
     // console.log(mobil.autorizacion);
     if (mobil.autorizacion) {
@@ -88,8 +72,6 @@ const { idMobil, id_tecnico } = Astro.params;
       const repuestos = ["pantalla", "flex-audio"];
 
       const reparacion1 = new Reparacion(mobil, tecnico, repuestos);
-
-      // console.log(reparacion1)
 
       $abonoInicial.innerHTML = newTecnico.calcularReparacion(mobil).toString();
     } else {
