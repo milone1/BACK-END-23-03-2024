@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+    background: #13151a;
+    /* background-size: 224px; */
+  }
+</style>
+</head>
+<body class="w-full h-screen grid place-items-center">
+  <div class="bg-white max-w-[450px] flex flex-col justify-center items-center rounded-2xl shadow-2xl p-10 gap-5">
+    <h3>Autorizar Reparacion</h3>
+    <input id="imei" class="py-2 pl-5 bg-gray-600 text-white placeholder:text-gray-300"
+    placeholder="Ingrese IMEI:" />
+    <input class="" type="file" accept="image/png" id="imageInput" />
+    <div class="" id="base64Img">
+
+    </div>
+
+    <button id="btn-autorizar" class="bg-blue-600 py-2 px-8 text-white uppercase rounded-2xl shadow-2xl">Autorizar</button>
+</body>
+<script type="module">
+const $imageInput = document.getElementById('imageInput')
+const listMobil = JSON.parse(localStorage.getItem("mobil")) || [];
+const $imei = document.getElementById('imei')
+const $btn = document.getElementById('btn-autorizar')
+
+let indexDelete;
+
+$btn.addEventListener('click', () => {
+  const mobil = listMobil.find(e => e.imei.toString() == $imei.value.toString());
+    
+    if (mobil) {
+        // Si se encuentra el objeto en la lista
+        mobil.autorizacion = true;
+        mobil.firma = base64Img
+        // Guardar la lista actualizada en localStorage
+        localStorage.setItem('mobil', JSON.stringify(listMobil));
+        
+        console.log('Se ha actualizado la autorización del móvil con IMEI:', $imei.value);
+    } else {
+        console.log('No se encontró ningún móvil con el IMEI:', $imei.value);
+    }
+})
+
+// console.log(mobil)
+let base64Img;
+
+$imageInput.addEventListener('change', () => {
+
+  const reader = new FileReader();
+
+  reader.onload = function(e)  {
+    base64Img  = e.target.result;
+
+    const imagenOnBase64 = document.getElementById('base64Img')
+
+    // console.log(imagenOnBase64)
+
+    imagenOnBase64.innerHTML = `<img src="${base64Img}"" alt="Image on base64" >`
+  }
+
+  console.log('1')
+  reader.readAsDataURL($imageInput.files[0]);
+
+  
+})
+</script>
+</html>

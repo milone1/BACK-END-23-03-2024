@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+    background: #13151a;
+    /* background-size: 224px; */
+  }
+</style>
+
+<body>
+  <Layout title="Hachaton05">
+    <section class="w-full h-auto grid place-items-center">
+      <div class="max-w-[450px] w-full bg-white px-5 py-6 rounded-xl grid place-items-center gap-5">
+        <h3>Ingresar tecnico</h3>
+        <div class="w-full h-auto flex flex-col gap-5">
+          <input id="name" class="py-2 pl-5 bg-gray-600 text-white placeholder:text-gray-300"
+            placeholder="Ingrese nombre" />
+          <div id="container-list">
+
+          </div>
+          <!-- {
+          listCelulares.map((celular, index) => (
+            <div class="w-full flex flex-col">
+              <label class="flex flex-row gap-4">
+                <input name={celular.marca} class="checkbox" type="checkbox" /> {celular.marca}
+              </label>
+              <br />
+            </div>
+          ))
+        } -->
+        </div>
+        <button id="ingresar1"
+          class="bg-blue-600 w-full h-auto py-2 text-center uppercase text-white font-medium rounded-full">Ingresar</button>
+      </div>
+    </section>
+  </Layout>
+
+  <script type="module">
+    import { Tecnico } from "../utils/Tecnico.js";
+    import { listMarca } from "../../data/data.js"
+    const $name = document.getElementById('name')
+    const $ingresar1 = document.getElementById('ingresar1')
+    const $checkbox = document.getElementsByClassName('checkbox')
+    const $containerList = document.getElementById('container-list')
+
+
+    // Iterar sobre listMarca y crear elementos li para cada marca
+    listMarca.forEach((e) => {
+      // Crear el elemento li
+      const listItem = document.createElement('div');
+
+      // Crear el elemento label
+      const label = document.createElement('label');
+      label.classList.add('flex', 'flex-row', 'gap-4');
+
+      // Crear el elemento input
+      const input = document.createElement('input');
+      input.setAttribute('type', 'checkbox');
+      input.setAttribute('name', e.marca);
+      input.classList.add('checkbox');
+
+      // Agregar el texto de la marca al label
+      label.textContent = e.marca;
+
+      // Agregar el input al label
+      label.prepend(input);
+
+      // Agregar el label al elemento li
+      listItem.appendChild(label);
+
+      // Agregar el elemento li al contenedor de la lista
+      $containerList.appendChild(listItem);
+    });
+
+    const listTecnicos = JSON.parse(localStorage.getItem('tecnico')) || [];
+    $ingresar1.addEventListener('click', (e) => {
+      let onlyNames = [];
+
+      const inputs = Array.from($checkbox).filter(element => element.checked === true)
+
+      inputs.map((element) => {
+        onlyNames.push(element.name)
+      })
+
+      const tecnico1 = new Tecnico($name.value || 'No especifica', onlyNames)
+      listTecnicos.push(tecnico1);
+      localStorage.setItem('tecnico', JSON.stringify(listTecnicos))
+    })
+
+
+  </script>
+</body>
+
+</html>

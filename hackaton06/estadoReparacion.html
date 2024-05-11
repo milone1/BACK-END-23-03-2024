@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+    background: #13151a;
+    /* background-size: 224px; */
+  }
+</style>
+
+<body>
+  <div>
+    <section class="w-full h-auto grid place-items-center">
+      <div id="card" class="w-full max-w-[450px] h-auto py-6 px-4 rounded-2xl grid place-items-center">
+        <!-- <h3>Estado de la revision del telefono</h3> -->
+
+        <div class="">
+          <h2 class="text-white">
+            <span class="uppercase font-semibold">Estado:</span> <p id="state" class=""></p>
+          </h2>
+
+          <h4 class="uppercase font-semibold text-white">
+            Abono: <span id="abonoInicial"></span> s/
+          </h4>
+          <!-- <span id="abonoInicial"></span> -->
+        </div>
+
+        <div class="" id="base64Img">
+
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
+
+
+<script type="module">
+  import { Tecnico } from "../utils/Tecnico.js";
+  import { Reparacion } from "../utils/Reparacion.js";
+  const $state = document.getElementById('state')
+  const $abonoInicial = document.getElementById("abonoInicial");
+
+  const listMobil = JSON.parse(localStorage.getItem("mobil")) || [];
+  const listaTecnico = JSON.parse(localStorage.getItem("tecnico")) || [];
+
+  // console.log(listMobil);
+
+  const card = document.getElementById("card");
+
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const imeiParam = urlParams.get('imei');
+  const nameParam = urlParams.get('name_user');
+
+  // console.log(imeiParam)
+
+  const obtenerMobil = listMobil.filter(
+    (element) => element.imei.toString().toLowerCase() === imeiParam
+  );
+
+
+  const obtenerTecnico = listaTecnico.filter(
+    (element) => element.nombre.toLowerCase() === nameParam.toLowerCase()
+  );
+
+
+  window.addEventListener("load", () => {
+
+    const newTecnico = new Tecnico(obtenerTecnico[0].nombre, obtenerTecnico[0].skills);
+    console.log(obtenerMobil[0].autorizacion);
+    if (obtenerMobil[0].autorizacion) {
+      card.classList.add("bg-green-400");
+      $state.innerHTML = 'En repacion';
+
+      const imagenOnBase64 = document.getElementById('base64Img')
+
+      // console.log(imagenOnBase64)
+
+      imagenOnBase64.innerHTML = `<img src="${obtenerMobil[0].firma}"" alt="Image on base64" >`
+      
+    } else {
+      card.classList.add("bg-red-400");
+      $state.innerHTML = 'En espera de autorizacion'
+    }
+
+    
+
+    if (newTecnico.puedeReparar(obtenerMobil[0].marca)) {
+      const repuestos = ["pantalla", "flex-audio"];
+
+      const reparacion1 = new Reparacion(obtenerMobil[0], obtenerTecnico[0], repuestos);
+
+      // console.log(reparacion1);
+
+      $abonoInicial.innerHTML = newTecnico.calcularReparacion(obtenerMobil[0]).toString();
+    } else {
+      alert("El tecnico no puede reparar esa marca");
+    }
+  });
+</script>

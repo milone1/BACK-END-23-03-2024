@@ -1,9 +1,21 @@
----
-import Layout from "../layouts/Layout.astro";
----
-
-<Layout title="Hachaton05">
-	<section class="w-full h-auto grid place-items-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+<style>
+  	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		/* background-size: 224px; */
+	}
+</style>
+<body>
+  <section class="w-full h-auto grid place-items-center">
 		<div
 			class="max-w-[450px] w-full bg-white px-5 py-6 rounded-xl grid place-items-center gap-5"
 		>
@@ -32,21 +44,21 @@ import Layout from "../layouts/Layout.astro";
 			>
 		</div>
 	</section>
-</Layout>
-<script>
-	import { Telefono } from "../models/TelefonoClass";
+</body>
+<script type="module">
+    import { Telefono } from "../utils/Telefono.js";
 
-	const $serie = document.getElementById("serie") as any;
-	const $imei = document.getElementById("imei") as any;
-	const $marca = document.getElementById("marca") as any;
-	const $ingresar = document.getElementById("ingresar") as any;
+	const $serie = document.getElementById("serie");
+	const $imei = document.getElementById("imei");
+	const $marca = document.getElementById("marca");
+	const $ingresar = document.getElementById("ingresar");
 
-	const obtenerLocalStorage = JSON.parse(localStorage.getItem('mobil')) || [] as any;
+	const obtenerLocalStorage = JSON.parse(localStorage.getItem('mobil')) || [];
 
 	// console.log(obtenerLocalStorage)
 
 	$ingresar.addEventListener("click", () => {
-		// console.log($imei.value) as any;
+		// console.log($imei.value);
 		if ($imei.value !== null || $imei !== undefined) {
 			const telefono = new Telefono($serie.value, $imei.value, $marca.value);
 			// localStorage.setItem("mobil", JSON.stringify(telefono1));
@@ -57,6 +69,7 @@ import Layout from "../layouts/Layout.astro";
 
 			window.location.reload();
 		}
-	}) as any;
+	});
 
 </script>
+</html>

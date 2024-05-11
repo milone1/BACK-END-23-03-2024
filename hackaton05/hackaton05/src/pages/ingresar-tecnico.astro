@@ -60,31 +60,14 @@ const listCelulares = [
 </Layout>
 
 <script>
+  import { Tecnico } from "../models/TecnicoClass";
+
   const $name = document.getElementById('name')
   const $ingresar1 = document.getElementById('ingresar1')
   const $checkbox = document.getElementsByClassName('checkbox')
 
-
-  class Tecnico {
-    constructor(nombre, skills) {
-      this.nombre = nombre;
-      this.skills = skills
-    }
-    
-    puedeReparar(marca) {
-      return this.skills.includes(marca)
-    }
-    
-    calcularReparacion(telefono) {
-      let costoBase = 100;
-      let costoMarca = telefono.marca === 'iphone' ? 50 : 0;
-      
-      return costoBase * costoMarca
-    }
-  }
-
+	const listTecnicos = JSON.parse(localStorage.getItem('tecnico')) || [] as any;
   $ingresar1.addEventListener('click', (e) => {
-
     let onlyNames = [];
 
     const inputs = Array.from($checkbox).filter(element => element.checked === true)
@@ -93,13 +76,9 @@ const listCelulares = [
       onlyNames.push(element.name)
     })
 
-    // console.log(onlyNames)
     const tecnico1 = new Tecnico($name.value || 'No especifica', onlyNames)
-  
-    // console.log(tecnico1)
-
-    localStorage.setItem('tecnico', JSON.stringify(tecnico1) )
-  
+    listTecnicos.push(tecnico1);
+    localStorage.setItem('tecnico', JSON.stringify(listTecnicos))  
   })
 
 

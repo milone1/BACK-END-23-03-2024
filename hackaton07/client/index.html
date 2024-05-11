@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+
+<body class="grid h-screen w-full place-items-center bg-black px-5">
+  <h3 class="text-lg text-white uppercase font-semibold py-10 text-6xl">POKE-DEX</h3>
+
+  <div class="w-full grid place-items-center grid-cols-3 cols-s gap-2 " id="poke-container">
+    
+  </div>
+</body>
+<script>
+  const pokeContainer = document.getElementById('poke-container')
+
+  function createPokeCard(pokemon) {
+    console.log(pokemon)
+    const pokeDiv = document.createElement('div')
+    pokeDiv.classList.add('w-full', 'h-auto', 'bg-white', 'rounded-2xl', 'grid', 'place-items-center', 'p-10', 'gap-5');
+    pokeDiv.innerHTML = `
+    <img src="${pokemon.img_path}" alt="" class="w-[90px] h-[90px] object-cover rounded-full shadow-2xl" />
+      <h2 class="uppercase">${pokemon.name}</h2>
+      <div class="flex flex-row justify-around w-full uppercase">
+        <p>alto: ${pokemon.height}</p>
+        <p>ancho: ${pokemon.weight}</p>
+      </div>
+      `;
+
+    return pokeDiv
+  }
+
+  function handlePokemonsData() {
+    fetch('http://localhost:3000/pokedex').then(response => response.json()).then(data => data.map((e) => {
+      pokeContainer.appendChild(createPokeCard(e))
+    }) )
+  }
+
+  handlePokemonsData()
+
+</script>
+
+</html>

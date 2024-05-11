@@ -29,15 +29,15 @@ const { idMobil, id_tecnico } = Astro.params;
 </Layout>
 
 <script>
-  import { Reparacion } from "../../models/ReparacionClass";
-  import { Tecnico } from "../../models/TecnicoClass";
+import { Reparacion } from "../../models/ReparacionClass";
+import { Tecnico } from "../../models/TecnicoClass";
 
-  const mobil = JSON.parse(localStorage.getItem("mobil"));
-  const tecnico = JSON.parse(localStorage.getItem("tecnico"));
   const $abonoInicial = document.getElementById("abonoInicial");
 
-  const obtenerLocalStorage =
-    JSON.parse(localStorage.getItem("mobil")) || ([] as any);
+  const listMobil = JSON.parse(localStorage.getItem("mobil")) || ([] as any);
+  const listaTecnico = JSON.parse(localStorage.getItem("tecnico")) || ([] as any);
+
+  // console.log(listMobil);
 
   const card = document.getElementById("card");
 
@@ -48,32 +48,42 @@ const { idMobil, id_tecnico } = Astro.params;
 
   // Obtener el último segmento que es el ID
   var id = segmentos[segmentos.length - 1];
-  
-  const params = id.split('-')
+
+  const params = id.split("-");
 
   // console.log(params)
 
- const mobilEncontrado = mobil.filter((element) => element.marca === params[0])
+  const obtenerMobil = listMobil.filter(
+    (element) => element.imei.toString().toLowerCase()  === params[0].toLowerCase()
+  );
 
-//  console.log(mobilEncontrado)
+
+  const obtenerTecnico = listaTecnico.filter(
+    (element) => element.nombre.toLowerCase()  === params[1].toLowerCase()
+  );
+
 
   window.addEventListener("load", () => {
     // console.log(mobil)
 
-    const newTecnico = new Tecnico(tecnico.name, tecnico.skills);
+    const newTecnico = new Tecnico(obtenerTecnico[0].nombre, obtenerTecnico.skills);
     // console.log(mobil.autorizacion);
-    if (mobil.autorizacion) {
+    if (obtenerMobil.autorizacion) {
       card.classList.add("bg-green-400");
     } else {
       card.classList.add("bg-red-400");
     }
+  
+    // console.log(obtenerMobil[0].marca)
 
-    if (newTecnico.puedeReparar(mobil.marca)) {
+    if (newTecnico.puedeReparar(obtenerMobil[0].marca)) {
       const repuestos = ["pantalla", "flex-audio"];
 
-      const reparacion1 = new Reparacion(mobil, tecnico, repuestos);
-
-      $abonoInicial.innerHTML = newTecnico.calcularReparacion(mobil).toString();
+      const reparacion1 = new Reparacion(obtenerMobil[0], obtenerTecnico[0], repuestos);
+      
+      console.log(reparacion1); 
+      
+      $abonoInicial.innerHTML = newTecnico.calcularReparacion(obtenerMobil[0]).toString();
     } else {
       alert("El tecnico no puede reparar esa marca");
     }

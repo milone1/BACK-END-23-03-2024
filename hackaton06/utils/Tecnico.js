@@ -5,14 +5,13 @@ export class Tecnico {
   }
 
   puedeReparar(marca) {
-    // console.log(marca)
-    return this.skills.includes(marca);
+
+    return this.skills?.includes(marca);
   }
 
   calcularReparacion(telefono) {
     let costoBase = 100;
     let costoMarca = telefono.marca === "iphone" ? 50 : 0;
-
     return costoBase * costoMarca;
   }
 }
