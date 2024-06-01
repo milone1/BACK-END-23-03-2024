@@ -1,0 +1,13 @@
+{
+  "proveedores": "Proveedor A",
+  "fecha_compra": "2024-05-25",
+  "items": [
+    {
+      "nombre": "Madera",
+      "cantidad": "100",
+      "unidad": "kg",
+      "precio_unitario": "12.5"
+    }
+  ],
+  "total": 1250
+}

@@ -1,0 +1,42 @@
+{
+  "producto": "cajon de madera",
+  "fecha_inicio": "24-05-2024",
+  "fecha_fin": "28-05-2024",
+  "cantidad": 2,
+  "material_prima_utilizada": [
+    {
+      "nombre": "madera",
+      "cantidad": 4,
+      "unidad": "kg"
+    },
+    {
+      "nombre": "fierro",
+      "cantidad": 1,
+      "unidad": "piezas"
+    }
+  ],
+  "insumos_utilizados": [
+    {
+      "mombre": "Barniz",
+      "cantidad": 2,
+      "unidad": "litros"
+    },
+    {
+      "mombre": "Pintura de color blanco",
+      "cantidad": 3,
+      "unidad": "litros"
+    }
+  ],
+  "personal asignado": [
+    {
+      "id": "1",
+      "horas_trabajadas": "8",
+      "unidad": "horas"
+    },
+    {
+      "id": "2",
+      "horas_trabajadas": "8",
+      "unidad": "horas"
+    }
+  ]
+}

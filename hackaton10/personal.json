@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1",
+    "nombre": "Juan",
+    "area": "construccion",
+    "fecha_ingreso": "12-12-2023",
+    "salario": 1200,
+    "turno": "completo"
+  },
+  {
+    "id": "2",
+    "nombre": "Maria",
+    "area": "construccion",
+    "fecha_ingreso": "12-12-2023",
+    "salario": 1200,
+    "turno": "completo"
+  }
+]
+
