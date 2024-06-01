@@ -2,6 +2,7 @@ const express = require('express')
 const sequelize = require('./config/database')
 const clienteRouter = require('./router/clienteRoute')
 const mascotaRouter = require('./router/mascotaRoute')
+const citaRouter = require('./router/citaRoute')
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json())
 
 app.use('/api', clienteRouter)
 app.use('/api', mascotaRouter)
+app.use('/api', citaRouter)
 
 sequelize.sync().then( () => {
 
