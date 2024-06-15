@@ -10,8 +10,8 @@ app.use(express.json())
 // Configuration
 cloudinary.config({ 
   cloud_name: "dijacbsqo", 
-  api_key: "914193487545775", 
-  api_secret: "SrlLtPj_VWRYOF81oQuHXqetv6I" // Click 'View Credentials' below to copy your API secret
+  api_key: "---", 
+  api_secret: "---" // Click 'View Credentials' below to copy your API secret
 });
 
 const storage = new CloudinaryStorage({
