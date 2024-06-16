@@ -26,6 +26,7 @@ const createCourses = async (req, res) => {
     return res.status(404).json({ msg: error })
   }
 }
+
 const updateCourses = async (req, res) => {
   try {
     res.status(200).send('Hi courses')
@@ -36,7 +37,15 @@ const updateCourses = async (req, res) => {
 
 const deleteCourses = async (req, res) => {
   try {
-    res.status(200).send('Hi courses')
+    const id = req.params.id
+    const findCourse = courseModel.findById(id)
+    if (!findCourse) {
+      return res.status(400).send('El usuario a eliminar no existe')
+    }
+
+    await courseModel.findOneAndDelete(id)
+
+    return res.status(200).send(`el curso con el id: ${id} a sido eliminado`)
   } catch (error) {
     return res.status(404).json({ msg: error })
   }

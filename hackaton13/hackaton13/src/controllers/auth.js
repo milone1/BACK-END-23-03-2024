@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 const userModel = require('../models/User')
+const { tokenSign } = require('../utils/handlerJwt')
 const { encrypt, compare } = require('../utils/hashPassword')
 
 const registerUser = async (req, res) => {
@@ -35,7 +36,10 @@ const loginUser = async (req, res) => {
     if (!correct) {
       return res.status(400).send('Contrasena incorrecta')
     }
-    return res.status(200).send('LOGIN CORRECTO')
+
+    const token = await tokenSign(findUser)
+
+    return res.status(200).json({ findUser, token })
   } catch (error) {
     return res.status(404).json({ msg: error })
   }
