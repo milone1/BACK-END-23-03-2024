@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    color-scheme: light dark;
+    font-family: 'Courier New', Courier, monospace;
+  }
+</style>
+
+<body class="w-full h-screen flex items-center justify-center gap-10 flex-col">
+  <h3>Vota por tu banda favorita:</h3>
+  <div id="band-container" class="w-[350px] bg-[#f2f2f2] rounded-2xl text-black p-5 font-semibold text-center flex flex-col gap-4">
+    <!-- <div class="flex flex-row justify-around w-full h-auto p-auto items-center">
+      <h2>Bon jovi</h2>
+      <span>3</span>
+      <button
+        class="uppercase text-lg bg-blue-600 border border-blue-600 hover:border-gray-700 transition-colors duration-300 ease-in-out rounded-md px-4 py-1 text-white hover:text-black hover:bg-white">botar</button>
+    </div> -->
+  </div>
+  <!-- <h3>socketsServer</h3> -->
+</body>
+<script type="module">
+  import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js"
+
+  const socket = io('http://localhost:3000')
+
+  socket.on('connect', function () {
+    console.log('Conectado al servidor')
+  });
+
+
+  const bandContainer = document.getElementById('band-container')
+
+  const renderBands = (bands) => {
+    bandContainer.innerHTML = '';
+
+    bands.map(band => {
+      // console.log(band)
+      const bandElement = document.createElement('div')
+      // bandElement.className = 'band-container'
+      bandElement.innerHTML = `
+        <div class="flex flex-row justify-between w-full h-auto p-auto items-center">
+      <h2>${band.name}</h2>
+      <span>${band.votes}</span>
+      <button onclick="voteBand('${band.id}')" class="uppercase text-lg bg-blue-600 border border-blue-600 hover:border-gray-700 transition-colors duration-300 ease-in-out rounded-md px-4 py-1 text-white hover:text-black hover:bg-white">botar</button>
+    </div>
+      `
+      bandContainer.appendChild(bandElement)
+    })
+  }
+
+  window.voteBand = (id) => {
+    socket.emit('vote-band', {id})
+  }
+
+  socket.on('active-bands', (bands) => {
+    renderBands(bands)
+  })
+
+
+</script>
+
+</html>
